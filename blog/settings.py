@@ -130,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 LOGOUT_REDIRECT_URL = 'login/'
 LOGIN_URL = 'login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/blog/list'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
