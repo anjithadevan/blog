@@ -16,3 +16,10 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.published:
+            self.published_date = timezone.now()
+        else:
+            self.published_date = None
+        super(BlogPost, self).save(*args, **kwargs)
