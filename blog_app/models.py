@@ -5,6 +5,11 @@ from django.utils import timezone
 # Create your models here.
 
 
+class BlogPostManager(models.Manager):
+    def active(self):
+        return self.filter(published=True)
+
+
 class BlogPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -13,6 +18,8 @@ class BlogPost(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
+
+    Published = BlogPostManager()
 
     def __str__(self):
         return self.title
