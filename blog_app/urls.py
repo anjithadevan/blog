@@ -8,6 +8,6 @@ from .views import GeeksViewSet
 router = routers.DefaultRouter()
 router.register(r'blogs', GeeksViewSet)
 urlpatterns = [
-    path('list/', TemplateView.as_view(template_name='blog_list.html')),
+    path('list/', TemplateView.as_view(template_name='blog_list.html'), name='blog-listing'),
     path('', include(router.urls)),
 ]

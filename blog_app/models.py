@@ -14,7 +14,7 @@ class BlogPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
-    blog_image = models.FileField(upload_to='documents/')
+    blog_image = models.FileField(upload_to='documents/', null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)

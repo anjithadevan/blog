@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static%}
+{% block style %}
+    <link rel="stylesheet" type="text/css"  href="{% static '/css/blog-list.css' %}">
+{% endblock %}
 {% block content %}
 <div class="jumbotron text-center">
   <h1>YOUR BLOGS</h1>
@@ -14,20 +17,51 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title">Add New Blog</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
+        <form action="/" method="post" enctype="multipart/form-data" id="blogForm">
+            {% csrf_token %}
       <div class="modal-body">
-        Modal body..
+          <div class="container">
+                <div class="row">
+                  <div class="col-25">
+                    <label for="title">Title</label><span class="text-danger">*</span>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="title" name="title" placeholder="Enter the title..">
+                      <span class="alert-danger" id="title_error" style="display: none;">This field is required</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="description">Description</label><span class="text-danger">*</span>
+                  </div>
+                  <div class="col-75">
+                    <textarea id="description" name="description" placeholder="Enter the description.." style="height:200px"></textarea>
+                    <span class="alert-danger" id="description_error" style="display: none;">This field is required</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="blog_image">Blog Image</label>
+                  </div>
+                  <div class="col-75">
+                    <input name="blogimage" type="file" id="blog_image" accept="image/*">
+                      <span class="alert-danger" id="blog_image_error" style="display: none;">Valid image files extensions are: .jpeg,.jpg,.png,.gif</span>
+                  </div>
+                </div>
+          </div>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success" id="add_blog">Add</button>
+<!--        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
       </div>
-
+        </form>
     </div>
   </div>
 </div>

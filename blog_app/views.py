@@ -1,8 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-
-# Create your views here.
+from django.urls import reverse
 from django.views.generic import FormView
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -18,7 +16,7 @@ class SignUpView(FormView):
     def form_valid(self, form):
         """If the form is valid, redirect to the supplied URL."""
         form.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect(reverse('login'))
 
 
 class GeeksViewSet(viewsets.ModelViewSet):

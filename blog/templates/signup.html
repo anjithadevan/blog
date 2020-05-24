@@ -1,9 +1,27 @@
 {% extends 'base.html' %}
+{% load static%}
+{% block style %}
+    <link rel="stylesheet" type="text/css"  href="{% static '/css/login.css' %}">
+{% endblock %}
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+<div class="container">
+        <div class="row">
+			<div class="col-md-5 mx-auto">
+			<div id="first">
+				<div class="myform form ">
+					 <div class="logo mb-3">
+						 <div class="col-md-12 text-center">
+							<h1>Sign up</h1>
+						 </div>
+					</div>
+                    <form method="post">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <button type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
 {% endblock %}

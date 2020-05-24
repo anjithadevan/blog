@@ -15,5 +15,5 @@ class BlogSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['author'] = self.context['request'].user
-        blog = BlogPost.objects.create(**validated_data)
+        blog = BlogPost.Published.create(**validated_data)
         return blog
