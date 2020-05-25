@@ -92,7 +92,12 @@ $( document ).ready(function() {
 
     })
     function getDate(date){
-    new_date = date.split('T')
-    return new_date[0]
+        if(date !=  null){
+            new_date = date.split('T')
+            return new_date[0]
+        }
+        else{
+            return date
+        }
     }
 });

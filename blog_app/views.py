@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import FormView
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 
 from blog_app.models import BlogPost
@@ -22,6 +22,7 @@ class SignUpView(FormView):
 class GeeksViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.Published.active()
     serializer_class = BlogSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset()).filter(author=self.request.user)
